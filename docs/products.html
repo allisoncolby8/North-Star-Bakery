@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>North Star Bakery | Products</title>
+<style>
+    :root {
+      --artifact-cream: #fff8ef;
+      --artifact-paper: #fffdf9;
+      --artifact-muted: #6e5a4b;
+      --artifact-ink: #2b211b;
+      --artifact-terracotta: #b85f4f;
+      --artifact-sage: #5e725a;
+      --artifact-gold: #b98943;
+      --artifact-line: #eadfd1;
+      --artifact-shadow: 0 12px 30px rgba(68, 45, 32, .10);
+      --artifact-radius: 1.1rem;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--artifact-cream);
+      color: var(--artifact-ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: var(--artifact-terracotta); font-weight: 700; }
+    a:hover, a:focus { color: var(--artifact-sage); }
+    :focus-visible { outline: 3px solid var(--artifact-gold); outline-offset: 3px; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--artifact-paper);
+      border-bottom: 1px solid var(--artifact-line);
+    }
+    .site-header-inner {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
+    .brand-area { display: flex; align-items: center; gap: .8rem; }
+    .brand-area img { width: 3.25rem; height: 3.25rem; object-fit: contain; }
+    .brand-name { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 1.35rem; font-weight: 700; }
+    .site-nav ul { display: flex; flex-wrap: wrap; gap: .65rem 1rem; padding: 0; margin: 0; list-style: none; }
+    .site-nav a { text-decoration: none; color: var(--artifact-muted); }
+    .site-nav a:hover, .site-nav a:focus { color: var(--artifact-terracotta); }
+
+    .site-main { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; padding: 1.25rem 0 3rem; }
+    .site-main > h1 {
+      margin: 2rem 0 .75rem;
+      color: var(--artifact-ink);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+    .site-main > h1 + p { max-width: 48rem; color: var(--artifact-muted); font-size: 1.1rem; }
+    .content-section {
+      margin: 1.25rem 0;
+      padding: clamp(1.25rem, 4vw, 2.6rem);
+      background: var(--artifact-paper);
+      border: 1px solid var(--artifact-line);
+      border-radius: var(--artifact-radius);
+      box-shadow: var(--artifact-shadow);
+    }
+    .content-section h2 {
+      margin-top: 0;
+      color: var(--artifact-sage);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.15;
+    }
+    .content-section h3 { margin-bottom: .35rem; font-family: Georgia, "Times New Roman", serif; font-size: 1.45rem; }
+    .content-section p { max-width: 60rem; }
+
+    .hero {
+      margin-top: 1.25rem;
+      padding: clamp(2rem, 8vw, 5rem) clamp(1.25rem, 6vw, 5rem);
+      background: var(--artifact-sage);
+      color: var(--artifact-paper);
+      border-radius: var(--artifact-radius);
+    }
+    .hero h1 { max-width: 42rem; margin: 0 0 1rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.8rem, 8vw, 5.7rem); line-height: 1.02; letter-spacing: -.05em; }
+    .hero p { max-width: 42rem; font-size: 1.08rem; }
+    .hero a { color: var(--artifact-paper); }
+    .hero a:hover, .hero a:focus { color: var(--artifact-gold); }
+
+    .known-section, .hours-section { background: var(--artifact-paper); }
+    .featured-section { background: #f6e3cf; }
+    .responsive-section { background: var(--artifact-cream); }
+    .audio-section { background: var(--artifact-ink); color: var(--artifact-paper); }
+    .audio-section h2 { color: var(--artifact-gold); }
+    .audio-player { width: 100%; max-width: 38rem; }
+
+    figure { margin: 1.5rem 0 0; }
+    figure img, .responsive-picture img { width: 100%; max-height: 30rem; object-fit: cover; border-radius: .85rem; }
+    figcaption { margin-top: .7rem; color: var(--artifact-muted); font-size: .95rem; font-style: italic; }
+    .responsive-picture { display: block; }
+
+    .card {
+      margin: 1rem 0;
+      padding: 1.2rem;
+      background: var(--artifact-cream);
+      border: 1px solid var(--artifact-line);
+      border-radius: .9rem;
+    }
+    .card img { width: 100%; max-height: 18rem; object-fit: cover; border-radius: .65rem; }
+    .product-section .card p:last-child { color: var(--artifact-terracotta); font-weight: 700; }
+    .team-section .card h3 { color: var(--artifact-terracotta); }
+
+    .inquiry-form { margin-top: 1rem; }
+    fieldset { margin: 0; padding: clamp(1rem, 4vw, 2rem); border: 2px solid var(--artifact-line); border-radius: .9rem; }
+    legend { padding: 0 .5rem; color: var(--artifact-sage); font-family: Georgia, "Times New Roman", serif; font-size: 1.35rem; font-weight: 700; }
+    label { font-weight: 700; }
+    input, select, textarea, button {
+      width: 100%;
+      margin-top: .35rem;
+      padding: .75rem .8rem;
+      border: 1px solid var(--artifact-line);
+      border-radius: .55rem;
+      background: var(--artifact-paper);
+      color: var(--artifact-ink);
+      font: inherit;
+    }
+    textarea { resize: vertical; }
+    button { max-width: 12rem; background: var(--artifact-terracotta); color: var(--artifact-paper); border-color: var(--artifact-terracotta); font-weight: 700; cursor: pointer; }
+    button:hover, button:focus { background: var(--artifact-sage); border-color: var(--artifact-sage); }
+
+     .site-footer { padding: 1.5rem 1rem; background: var(--artifact-ink); color: var(--artifact-paper); text-align: center; }
+    .site-footer p { margin: 0; }
+
+    @media (min-width: 760px) {
+      .site-header-inner { flex-direction: row; align-items: center; justify-content: space-between; }
+      .site-nav ul { justify-content: flex-end; }
+      .site-main { padding-top: 2rem; }
+      .home-page .known-section, .home-page .hours-section { display: grid; grid-template-columns: minmax(12rem, .7fr) 1.3fr; gap: 2rem; align-items: start; }
+      .product-section, .team-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+      .product-section > h2, .team-section > h2 { grid-column: 1 / -1; }
+      .product-section .card, .team-section .card { margin: 0; }
+      .story-section, .sourcing-section { display: grid; grid-template-columns: .9fr 1.1fr; gap: 2rem; align-items: start; }
+      .story-section > h2, .sourcing-section > h2 { grid-column: 1 / -1; }
+      .story-section img { grid-row: span 2; }
+      .visit-section { display: grid; grid-template-columns: .8fr 1.2fr; gap: 2rem; align-items: start; }
+      .visit-section > h2 { grid-column: 1 / -1; }
+      .inquiry-section { max-width: 56rem; margin-left: auto; margin-right: auto; }
+      .featured-section figure { max-width: 50rem; }
+    }
+
+    @media print {
+      .site-header { position: static; }
+      .content-section, .hero, .card { box-shadow: none; break-inside: avoid; }
+      @page { size: auto !important; }
+    }
+
+    .preorder-panel { background: var(--artifact-sage); color: var(--artifact-paper); }
+    .preorder-panel h2 { color: var(--artifact-paper); }
+    .preorder-panel a { color: var(--artifact-paper); }
+    .preorder-panel a:hover, .preorder-panel a:focus { color: var(--artifact-gold); }
+    .selected-list { padding-left: 1.25rem; }
+    .selected-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; margin: .6rem 0; }
+    .add-to-list { width: auto; margin-top: .6rem; padding: .55rem .75rem; }
+    .remove-item { width: auto; margin-top: 0; padding: .35rem .6rem; background: transparent; color: var(--artifact-paper); border: 1px solid var(--artifact-paper); }
+    .remove-item:hover, .remove-item:focus { background: var(--artifact-paper); color: var(--artifact-sage); border-color: var(--artifact-paper); }
+    .preorder-status, #form-status { margin-top: .8rem; font-weight: 700; }
+    .field-error { display: block; margin-top: .25rem; color: var(--artifact-terracotta); font-size: .9rem; font-weight: 700; }
+    .input-error { border-color: var(--artifact-terracotta); }
+
+</style>
+</head>
+<body class="products-page">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand-area">
+        <img src="assets/bakery-logo_c.png" alt="North Star Bakery logo" width="100">
+        <p class="brand-name">North Star Bakery</p>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <h1>Products</h1>
+    <p>Browse our everyday favorites and seasonal bakes. Prices are guides; contact us for availability, custom details, and larger orders.</p>
+
+    <section class="content-section preorder-panel" aria-labelledby="preorder-heading">
+      <h2 id="preorder-heading">Build your pre-order list</h2>
+      <p>Select products below to create a list you can carry into your inquiry.</p>
+      <p><strong><span id="preorder-count">0</span> item(s) selected</strong></p>
+      <ul id="preorder-list" class="selected-list"></ul>
+      <p id="preorder-empty">No items selected yet.</p>
+      <p id="preorder-status" class="preorder-status" role="status" aria-live="polite"></p>
+      <p><a href="contact.html">Continue to the inquiry form</a></p>
+    </section>
+
+
+    <section class="content-section product-section">
+      <h2>Breads</h2>
+      <article class="card">
+        <h3>Country sourdough</h3>
+        <img src="assets/bakery-bread_c.png" alt="Fresh North Star Bakery breads" width="500">
+        <p>A naturally leavened loaf with a crisp crust and open, chewy crumb.</p>
+        <p>Price range: $8–$12</p>
+        <p class="card-actions"><button type="button" class="add-to-list" data-product="Country sourdough">Add to pre-order list</button></p>
+      </article>
+      <article class="card">
+        <h3>Signature loaf</h3>
+        <img src="assets/bakery-signature-loaf_c.png" alt="North Star Bakery signature loaf" width="500">
+        <p>A rotating blend of grains, seeds, and bakery magic. Ask what is in the oven today.</p>
+        <p>Price range: $9–$14</p>
+        <p class="card-actions"><button type="button" class="add-to-list" data-product="Signature loaf">Add to pre-order list</button></p>
+      </article>
+      <article class="card">
+        <h3>Garden focaccia</h3>
+        <p>Olive oil-rich focaccia topped with herbs and seasonal produce.</p>
+        <p>Price range: $7–$18</p>
+        <p class="card-actions"><button type="button" class="add-to-list" data-product="Garden focaccia">Add to pre-order list</button></p>
+      </article>
+    </section>
+
+    <section class="content-section product-section">
+      <h2>Pastries</h2>
+      <article class="card">
+        <h3>Butter croissant</h3>
+        <p>Flaky, delicate, and baked in small batches throughout the morning.</p>
+        <p>Price range: $4–$5 each</p>
+        <p class="card-actions"><button type="button" class="add-to-list" data-product="Butter croissant">Add to pre-order list</button></p>
+      </article>
+      <article class="card">
+        <h3>Seasonal danish</h3>
+        <p>Layers of pastry, creamy filling, and fruit chosen at the market.</p>
+        <p>Price range: $5–$7 each</p>
+        <p class="card-actions"><button type="button" class="add-to-list" data-product="Seasonal danish">Add to pre-order list</button></p>
+      </article>
+      <article class="card">
+        <h3>Morning bun</h3>
+        <p>Spiced, citrusy, and caramelized around the edges.</p>
+        <p>Price range: $4–$6 each</p>
+        <p class="card-actions"><button type="button" class="add-to-list" data-product="Morning bun">Add to pre-order list</button></p>
+      </article>
+    </section>
+
+    <section class="content-section product-section">
+      <h2>Cakes and celebrations</h2>
+      <article class="card">
+        <h3>Layer cakes</h3>
+        <p>Classic vanilla, chocolate, and seasonal flavors with buttercream made in-house.</p>
+        <p>Price range: $45–$90</p>
+        <p class="card-actions"><button type="button" class="add-to-list" data-product="Layer cakes">Add to pre-order list</button></p>
+      </article>
+      <article class="card">
+        <h3>Event assortments</h3>
+        <p>Pastries, mini cakes, and breads for office breakfasts, family celebrations, and community events.</p>
+        <p>Price range: $55–$250+</p>
+        <p class="card-actions"><button type="button" class="add-to-list" data-product="Event assortments">Add to pre-order list</button></p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 North Star Bakery</p>
+  </footer>
+<script>
+  const PREORDER_STORAGE_KEY = "northStarBakeryPreorderItems";
+  const productCatalog = [
+    { name: "Country sourdough", price: "$8–$12" },
+    { name: "Signature loaf", price: "$9–$14" },
+    { name: "Garden focaccia", price: "$7–$18" },
+    { name: "Butter croissant", price: "$4–$5 each" },
+    { name: "Seasonal danish", price: "$5–$7 each" },
+    { name: "Morning bun", price: "$4–$6 each" },
+    { name: "Layer cakes", price: "$45–$90" },
+    { name: "Event assortments", price: "$55–$250+" }
+  ];
+
+  function loadPreorderItems() {
+    try {
+      const savedItems = JSON.parse(localStorage.getItem(PREORDER_STORAGE_KEY));
+      return Array.isArray(savedItems) ? savedItems : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function savePreorderItems(items) {
+    try {
+      localStorage.setItem(PREORDER_STORAGE_KEY, JSON.stringify(items));
+    } catch (error) {
+      // The page remains usable if browser storage is unavailable.
+    }
+  }
+
+  let selectedItems = loadPreorderItems();
+
+  function renderPreorderList() {
+    const list = document.querySelector("#preorder-list");
+    const count = document.querySelector("#preorder-count");
+    const emptyMessage = document.querySelector("#preorder-empty");
+    if (!list || !count || !emptyMessage) return;
+
+    list.innerHTML = "";
+    let totalQuantity = 0;
+    selectedItems.forEach((item) => {
+      totalQuantity += item.quantity;
+      const row = document.createElement("li");
+      const label = document.createElement("span");
+      label.textContent = `${item.name} × ${item.quantity} (${item.price})`;
+      const removeButton = document.createElement("button");
+      removeButton.type = "button";
+      removeButton.className = "remove-item";
+      removeButton.textContent = "Remove";
+      removeButton.addEventListener("click", () => removeFromPreorder(item.name));
+      row.append(label, removeButton);
+      list.appendChild(row);
+    });
+
+    count.textContent = totalQuantity;
+    emptyMessage.hidden = selectedItems.length > 0;
+  }
+
+  function addToPreorder(productName) {
+    const product = productCatalog.find((item) => item.name === productName);
+    if (!product) return;
+    const existingItem = selectedItems.find((item) => item.name === product.name);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      selectedItems.push({ ...product, quantity: 1 });
+    }
+    savePreorderItems(selectedItems);
+    renderPreorderList();
+    const status = document.querySelector("#preorder-status");
+    if (status) status.textContent = `${product.name} was added to your pre-order list.`;
+  }
+
+  function removeFromPreorder(productName) {
+    const item = selectedItems.find((product) => product.name === productName);
+    if (!item) return;
+    if (item.quantity > 1) {
+      item.quantity -= 1;
+    } else {
+      selectedItems = selectedItems.filter((product) => product.name !== productName);
+    }
+    savePreorderItems(selectedItems);
+    renderPreorderList();
+  }
+
+  function populateItemDetails() {
+    const detailsField = document.querySelector("#item-details");
+    if (!detailsField || detailsField.value.trim() || selectedItems.length === 0) return;
+    detailsField.value = selectedItems.map((item) => `${item.name} × ${item.quantity}`).join("\n");
+  }
+
+  function showFieldError(field, message) {
+    const fieldWrapper = field.closest("p");
+    if (!fieldWrapper) return;
+    let error = fieldWrapper.querySelector(".field-error");
+    if (!error) {
+      error = document.createElement("span");
+      error.className = "field-error";
+      error.id = `${field.id}-error`;
+      fieldWrapper.appendChild(error);
+    }
+    error.textContent = message;
+    field.classList.toggle("input-error", Boolean(message));
+    field.setAttribute("aria-invalid", Boolean(message));
+    field.setAttribute("aria-describedby", error.id);
+  }
+
+  function validateField(field) {
+    const value = field.value.trim();
+    let message = "";
+    if (field.required && !value) {
+      message = "Please complete this field.";
+    } else if (field.type === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      message = "Enter a valid email address.";
+    } else if (field.id === "item-details" && value && value.length < 10) {
+      message = "Please provide at least 10 characters of detail.";
+    } else if (field.id === "pickup-date" && value) {
+      const selectedDate = new Date(`${value}T00:00:00`);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      if (selectedDate < today) message = "Choose today or a future pickup date.";
+    }
+    showFieldError(field, message);
+    return message === "";
+  }
+
+  function setupProductInteractions() {
+    document.querySelectorAll(".add-to-list").forEach((button) => {
+      button.addEventListener("click", () => addToPreorder(button.dataset.product));
+    });
+    renderPreorderList();
+  }
+
+  function setupFormValidation() {
+    const form = document.querySelector(".inquiry-form");
+    if (!form) return;
+    const fields = Array.from(form.querySelectorAll("input, select, textarea"));
+    fields.forEach((field) => {
+      field.addEventListener("blur", () => validateField(field));
+      field.addEventListener("input", () => {
+        if (field.classList.contains("input-error")) validateField(field);
+      });
+    });
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const isValid = fields.map(validateField).every(Boolean);
+      const status = document.querySelector("#form-status");
+      if (!isValid) {
+        const firstInvalid = fields.find((field) => field.classList.contains("input-error"));
+        if (firstInvalid) firstInvalid.focus();
+        if (status) status.textContent = "Please correct the highlighted fields before sending your inquiry.";
+        return;
+      }
+      if (status) status.textContent = "Thanks! Your inquiry is ready for the North Star Bakery team to review.";
+      form.reset();
+      selectedItems = [];
+      savePreorderItems(selectedItems);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setupProductInteractions();
+    populateItemDetails();
+    setupFormValidation();
+  });
+</script>
+</body>
+</html>
